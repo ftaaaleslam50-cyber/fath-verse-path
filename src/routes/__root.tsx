@@ -79,18 +79,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "منصة مركز الفردوس القرآني" },
+      { title: "مركز الفردوس القرآني | حلقات تحفيظ ومتابعة إلكترونية" },
       {
         name: "description",
-        content: "منصة متكاملة لإدارة مركز الفردوس القرآني: الحلقات، الطلاب، المعلمون ومتابعة الحفظ.",
+        content: "مركز الفردوس القرآني: حلقات تحفيظ ومراجعة، متابعة يومية لأولياء الأمور، تسجيل إلكتروني، ولوحة شرف للمتميزين.",
       },
-      { property: "og:title", content: "منصة مركز الفردوس القرآني" },
+      { property: "og:title", content: "مركز الفردوس القرآني | حلقات تحفيظ ومتابعة إلكترونية" },
       {
         property: "og:description",
-        content: "منصة متكاملة لإدارة مركز الفردوس القرآني: الحلقات، الطلاب، المعلمون ومتابعة الحفظ.",
+        content: "مركز الفردوس القرآني: حلقات تحفيظ ومراجعة، متابعة يومية لأولياء الأمور، تسجيل إلكتروني، ولوحة شرف للمتميزين.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "مركز الفردوس القرآني | حلقات تحفيظ ومتابعة إلكترونية" },
+      { name: "twitter:description", content: "مركز الفردوس القرآني: حلقات تحفيظ ومراجعة، متابعة يومية لأولياء الأمور، تسجيل إلكتروني، ولوحة شرف للمتميزين." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bdefb555-442b-47ef-a630-00e77b2671b2/id-preview-814067b1--8367777b-3c7c-48e7-b296-ed0f17513f40.lovable.app-1785207034684.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bdefb555-442b-47ef-a630-00e77b2671b2/id-preview-814067b1--8367777b-3c7c-48e7-b296-ed0f17513f40.lovable.app-1785207034684.png" },
     ],
     links: [
       {

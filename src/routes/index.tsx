@@ -29,10 +29,10 @@ export const Route = createFileRoute("/")({
         content:
           "مركز الفردوس القرآني: حلقات تحفيظ ومراجعة، متابعة يومية لأولياء الأمور، تسجيل إلكتروني، ولوحة شرف للمتميزين.",
       },
-      { property: "og:title", content: "مركز الفردوس القرآني" },
+      { property: "og:title", content: "مركز الفردوس القرآني | حلقات تحفيظ ومتابعة إلكترونية" },
       {
         property: "og:description",
-        content: "حلقات تحفيظ ومراجعة ومتابعة إلكترونية دقيقة لكل طالب في جميع فروع المركز.",
+        content: "مركز الفردوس القرآني: حلقات تحفيظ ومراجعة، متابعة يومية لأولياء الأمور، تسجيل إلكتروني، ولوحة شرف للمتميزين.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
