@@ -43,7 +43,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Link
-            to="/"
+            to="/auth"
             className="rounded-lg border border-border px-4 py-2 text-sm font-bold text-foreground transition-colors hover:bg-secondary"
           >
             تسجيل الدخول
