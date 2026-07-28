@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { Users, BookOpenCheck, GraduationCap, Inbox, CalendarCheck, BookMarked } from "lucide-react";
+import { Users, BookOpenCheck, CalendarCheck, BookMarked } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { PageHeader } from "@/components/app/AppShell";
@@ -74,29 +74,6 @@ function DashboardPage() {
         <StatCard icon={BookMarked} label="مجموع الصفحات المحفوظة" value={stats?.pages ?? 0} />
         <StatCard icon={CalendarCheck} label="نسبة الحضور" value={`${stats?.attendanceRate ?? 0}%`} />
       </div>
-
-      {isStaff && (
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <Link to="/requests" className="rounded-2xl border border-border bg-card p-5 shadow-soft transition-transform hover:-translate-y-0.5">
-            <div className="flex items-center gap-3">
-              <Inbox className="size-5 text-accent-foreground" />
-              <div>
-                <p className="text-sm text-muted-foreground">طلبات تسجيل بانتظار المراجعة</p>
-                <p className="text-2xl font-extrabold text-primary-deep">{stats?.pending ?? 0}</p>
-              </div>
-            </div>
-          </Link>
-          <Link to="/teachers" className="rounded-2xl border border-border bg-card p-5 shadow-soft transition-transform hover:-translate-y-0.5">
-            <div className="flex items-center gap-3">
-              <GraduationCap className="size-5 text-primary" />
-              <div>
-                <p className="text-sm text-muted-foreground">إدارة المعلمين والصلاحيات</p>
-                <p className="text-sm font-bold text-primary-deep">فتح الصفحة</p>
-              </div>
-            </div>
-          </Link>
-        </div>
-      )}
 
       <div className="mt-6 rounded-2xl border border-border bg-card p-5 shadow-soft">
         <h2 className="mb-4 text-base font-extrabold text-primary-deep">تطور الحفظ خلال الأشهر الأخيرة</h2>

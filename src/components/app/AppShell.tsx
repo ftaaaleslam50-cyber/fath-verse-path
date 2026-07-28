@@ -3,16 +3,9 @@ import { useState, type ReactNode } from "react";
 import {
   LayoutDashboard,
   Users,
-  BookOpenCheck,
-  GraduationCap,
-  CalendarCheck,
-  LineChart,
-  Megaphone,
-  Inbox,
   LogOut,
   Menu,
   X,
-  Bell,
 } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuth, ROLE_LABELS } from "@/hooks/use-auth";
@@ -23,13 +16,6 @@ type NavItem = { to: string; label: string; icon: typeof Users; roles: string[] 
 const NAV: NavItem[] = [
   { to: "/dashboard", label: "لوحة التحكم", icon: LayoutDashboard, roles: ["admin", "supervisor", "teacher", "parent", "student"] },
   { to: "/students", label: "الطلاب", icon: Users, roles: ["admin", "supervisor", "teacher"] },
-  { to: "/circles", label: "الحلقات", icon: BookOpenCheck, roles: ["admin", "supervisor", "teacher"] },
-  { to: "/teachers", label: "المعلمون والصلاحيات", icon: GraduationCap, roles: ["admin"] },
-  { to: "/attendance", label: "الحضور والمتابعة", icon: CalendarCheck, roles: ["admin", "supervisor", "teacher"] },
-  { to: "/reports", label: "التقارير والإحصائيات", icon: LineChart, roles: ["admin", "supervisor", "teacher"] },
-  { to: "/requests", label: "طلبات التسجيل", icon: Inbox, roles: ["admin", "supervisor"] },
-  { to: "/announcements", label: "الإعلانات", icon: Megaphone, roles: ["admin", "supervisor"] },
-  { to: "/notifications", label: "الإشعارات", icon: Bell, roles: ["admin", "supervisor", "teacher", "parent", "student"] },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -56,7 +42,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         return (
           <Link
             key={item.to}
-            to={item.to}
+            to={item.to as never}
             onClick={() => setOpen(false)}
             className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-bold transition-colors ${
               active
