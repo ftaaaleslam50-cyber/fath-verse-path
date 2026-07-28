@@ -13,8 +13,8 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedStudentsRouteImport } from './routes/_authenticated/students'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedStudentsIndexRouteImport } from './routes/_authenticated/students.index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -35,30 +35,31 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedStudentsRoute = AuthenticatedStudentsRouteImport.update({
-  id: '/students',
-  path: '/students',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedStudentsIndexRoute =
+  AuthenticatedStudentsIndexRouteImport.update({
+    id: '/students/',
+    path: '/students/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/students': typeof AuthenticatedStudentsRoute
+  '/students/': typeof AuthenticatedStudentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/students': typeof AuthenticatedStudentsRoute
+  '/students': typeof AuthenticatedStudentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -67,11 +68,11 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
-  '/_authenticated/students': typeof AuthenticatedStudentsRoute
+  '/_authenticated/students/': typeof AuthenticatedStudentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/sitemap.xml' | '/dashboard' | '/students'
+  fullPaths: '/' | '/auth' | '/sitemap.xml' | '/dashboard' | '/students/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/auth' | '/sitemap.xml' | '/dashboard' | '/students'
   id:
@@ -81,7 +82,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/sitemap.xml'
     | '/_authenticated/dashboard'
-    | '/_authenticated/students'
+    | '/_authenticated/students/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -121,13 +122,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/students': {
-      id: '/_authenticated/students'
-      path: '/students'
-      fullPath: '/students'
-      preLoaderRoute: typeof AuthenticatedStudentsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -135,17 +129,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/students/': {
+      id: '/_authenticated/students/'
+      path: '/students'
+      fullPath: '/students/'
+      preLoaderRoute: typeof AuthenticatedStudentsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
-  AuthenticatedStudentsRoute: typeof AuthenticatedStudentsRoute
+  AuthenticatedStudentsIndexRoute: typeof AuthenticatedStudentsIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
-  AuthenticatedStudentsRoute: AuthenticatedStudentsRoute,
+  AuthenticatedStudentsIndexRoute: AuthenticatedStudentsIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
