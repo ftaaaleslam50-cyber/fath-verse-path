@@ -6,6 +6,11 @@ import {
   LogOut,
   Menu,
   X,
+  BookOpen,
+  CalendarCheck,
+  ClipboardList,
+  Megaphone,
+  ShieldCheck,
 } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuth, ROLE_LABELS } from "@/hooks/use-auth";
@@ -16,7 +21,13 @@ type NavItem = { to: string; label: string; icon: typeof Users; roles: string[] 
 const NAV: NavItem[] = [
   { to: "/dashboard", label: "لوحة التحكم", icon: LayoutDashboard, roles: ["admin", "supervisor", "teacher", "parent", "student"] },
   { to: "/students", label: "الطلاب", icon: Users, roles: ["admin", "supervisor", "teacher"] },
+  { to: "/circles", label: "الحلقات", icon: BookOpen, roles: ["admin", "supervisor", "teacher"] },
+  { to: "/attendance", label: "التحضير اليومي", icon: CalendarCheck, roles: ["admin", "supervisor", "teacher"] },
+  { to: "/requests", label: "طلبات التسجيل", icon: ClipboardList, roles: ["admin", "supervisor"] },
+  { to: "/announcements", label: "الإعلانات", icon: Megaphone, roles: ["admin", "supervisor", "teacher", "parent", "student"] },
+  { to: "/users", label: "المستخدمون", icon: ShieldCheck, roles: ["admin", "supervisor"] },
 ];
+
 
 export function AppShell({ children }: { children: ReactNode }) {
   const { roles, primaryRole, user, signOut } = useAuth();
