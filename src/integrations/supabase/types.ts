@@ -548,6 +548,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      claim_admin: { Args: never; Returns: string }
       get_student_public: {
         Args: { _code: string }
         Returns: {
